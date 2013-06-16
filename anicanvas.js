@@ -1,8 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>Testing client for anicanvas</title>
-<script type="text/javascript">
 //Developed by Vacation9, Released into the Public Domain
 //Testing version, use anicanvas.min.js for production uses
 
@@ -105,14 +100,3 @@ var AniHandler =
         }
     }
 }
-</script>
-</head>
-<body>
-<canvas id="testCanvas" width="200" height="200"></canvas>
-<script>
-    var c = new Anicanvas('testCanvas');
-    c.addShape({id:"circle", shape:"circle", x:50, y:20, radius:30});
-    c.animateShape("circle",150,150,1000);
-</script>
-</body>
-</html>
