@@ -110,9 +110,9 @@ var AniHandler =
 <body>
 <canvas id="testCanvas" width="200" height="200"></canvas>
 <script>
-    var c = new Anicanvas('testCanvas');
-    c.addShape({id:"circle", shape:"circle", x:50, y:20, radius:30});
-    c.animateShape("circle",150,150,1000);
+    var c = new Anicanvas('testCanvas'); //Make a new Anicanvas object from the canvas' id
+    c.addShape({id:"circle", shape:"circle", x:50, y:20, radius:30}); //Add a shape which is a circle
+    c.animateShape("circle",150,150,1000); //Animate the shape with id "circle" to x:150, y:150 over 1000 milliseconds
 </script>
 </body>
 </html>
