@@ -12,12 +12,13 @@ function Anicanvas(canvas) {
     }
     this.moveShape = function (id, x, y) {
         var s = AniHandler.findById(this.carray,id);
+        console.log(s);
         if (typeof(x) == "string" && x.charAt(0) == "+") s.props.x = s.props.x+parseInt(x.substring(1));
-        if (typeof(x) == "string" && x.charAt(0) == "-") s.props.x = s.props.x-parseInt(x.substring(1));
+        else if (typeof(x) == "string" && x.charAt(0) == "-") s.props.x = s.props.x-parseInt(x.substring(1));
+        else s.props.x = x;
         if (typeof(y) == "string" && y.charAt(0) == "+") s.props.y = s.props.y+parseInt(y.substring(1));
-        if (typeof(y) == "string" && y.charAt(0) == "-") s.props.y = s.props.y-parseInt(y.substring(1));
-        s.props.x = x; //Set x and y to new values
-        s.props.y = y;
+        else if (typeof(y) == "string" && y.charAt(0) == "-") s.props.y = s.props.y-parseInt(y.substring(1));
+        else s.props.y = y;
         AniHandler.redraw(this.context, this.carray, this.canvasObject); //then redraw; simple!
     }
     this.animateShape = function (id, x, y, ms) {
