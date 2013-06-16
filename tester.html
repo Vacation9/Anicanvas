@@ -5,11 +5,14 @@
 <script src="anicanvas.js"></script>
 </head>
 <body>
-<canvas id="testCanvas" width="200" height="200"></canvas>
+<canvas id="testCanvas" width="500" height="500"></canvas>
 <script>
     var c = new Anicanvas('testCanvas'); //Make a new Anicanvas object from the canvas' id
-    c.addShape({id:"circle", shape:"circle", x:50, y:20, radius:30}); //Add a shape which is a circle
-    c.animateShape("circle",150,150,1000); //Animate the shape with id "circle" to x:150, y:150 over 1000 milliseconds
+    c.addShape({id:"circle", shape:"circle", x:400, y:100, radius:30}); //Add a shape which is a circle
+    c.addShape({id:"rsquare", color:"red", shape:"rectangle", x:10, y:100, width:70, height:70, strokeWidth:3}); //Add a shape which is a square
+    c.addShape({id:"bsquare", fill:false, shape:"rectangle", x:110, y:100, width:70, height:70}); //Add a shape which is a square
+    c.addShape({id:"gsquare", color:"green", stroke:false, shape:"rectangle", x:210, y:100, width:70, height:70}); //Add a shape which is a square
+    c.animateShape("circle",400,400,1000); //Animate the shape with id "circle" to x:150, y:150 over 1000 milliseconds
 </script>
 </body>
 </html>

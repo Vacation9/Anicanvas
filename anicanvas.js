@@ -64,10 +64,10 @@ var AniHandler = {
                 var strokeStyle = canvas.strokeStyle;
                 var lineWidth = canvas.lineWidth;
                 canvas.fillStyle = shape.props.color || fillStyle;
-                canvas.fill();
+                if (shape.props.fill !== false) canvas.fill();
                 canvas.lineWidth = sv(shape.props.strokeWidth, lineWidth);
                 canvas.strokeStyle = shape.props.stroke || strokeStyle;
-                canvas.stroke();
+                if (shape.props.stroke !== false) canvas.stroke();
                 canvas.fillStyle = fillStyle;
                 canvas.strokeStyle = strokeStyle;
                 canvas.lineWidth = lineWidth;
@@ -79,16 +79,16 @@ var AniHandler = {
                 var strokeStyle = canvas.strokeStyle;
                 var lineWidth = canvas.lineWidth;
                 canvas.fillStyle = shape.props.color || fillStyle;
-                canvas.fill();
+                if (shape.props.fill !== false) canvas.fill();
                 canvas.lineWidth = sv(shape.props.strokeWidth, lineWidth);
-                canvas.strokeStyle = shape.props.stroke || strokeStyle;
-                canvas.stroke();
+                canvas.strokeStyle = shape.props.strokeColor || strokeStyle;
+                if (shape.props.stroke !== false) canvas.stroke();
                 canvas.fillStyle = fillStyle;
                 canvas.strokeStyle = strokeStyle;
                 canvas.lineWidth = lineWidth;
             }
         }
-        switch (shape["shape"]) {
+        switch (shape.shape) {
         case "circle":
             defaults.arc(0, 2 * Math.PI);
             break;
