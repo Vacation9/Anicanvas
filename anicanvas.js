@@ -6,8 +6,7 @@ function Anicanvas(canvas) {
     this.context = this.canvasObject.getContext('2d'); //this is what we'll be using most often
     this.carray = []; //make array of shapes + text for easy redrawing
     this.addShape = function (properties) {
-        this.carray.push({shape: properties["shape"], props: properties});
-        console.log(this.carray);
+        this.carray.push({id:properties['id'], shape: properties["shape"], props: properties});
         AniHandler.redraw(this.context, this.carray, this.canvasObject);
     }
 }
@@ -22,21 +21,22 @@ var AniHandler =
         var defaults = {
             arc: function(sAngle, eAngle){
                     canvas.beginPath();
-                    console.log(sv(shape['props']['x'],canvasObject.width/2));
-                    console.log(sv(shape['props']['y'],canvasObject.height/2));
-                    console.log(sv(shape['props']['radius'],10));
-                    console.log(sv(shape['props']['sAngle'],sAngle));
                     canvas.arc(sv(shape['props']['x'],canvasObject.width/2), sv(shape['props']['y'],canvasObject.height/2), sv(shape['props']['radius'],10), sv(shape['props']['sAngle'],sAngle), sv(shape['props']['eAngle'],eAngle), sv(shape['props']['counterclockwise'],false));
-                    canvas.fillStyle = shape['fillStyle'] || 'black';
+                    var fillStyle = canvas.fillStyle;
+                    var strokeStyle = canvas.strokeStyle;
+                    var lineWidth = canvas.lineWidth;
+                    canvas.fillStyle = shape['fillStyle'] || fillStyle;
                     canvas.fill();
-                    canvas.lineWidth = sv(shape['lineWidth'], 0);
-                    canvas.strokeStyle = shape['strokeStyle'] || 'grey';
+                    canvas.lineWidth = sv(shape['lineWidth'], lineWidth);
+                    canvas.strokeStyle = shape['strokeStyle'] || strokeStyle;
                     canvas.stroke();
+                    canvas.fillStyle = fillStyle;
+                    canvas.strokeStyle = strokeStyle;
+                    canvas.lineWidth = lineWidth;
                 },
             rectangle: function(width, height){
                     canvas.beginPath();
-                    console.log(shape);
-                    canvas.rect(shape['props']['x'] || canvasObject.width/2, shape['props']['y'] || canvasObject.height/2, shape['props']['width'] || width, shape['props']['height'] || height);
+                    canvas.rect(sv(shape['props']['x'],canvasObject.width/2), sv(shape['props']['y'],canvasObject.height/2), sv(shape['props']['width'],width), sv(shape['props']['height'],height));
                     canvas.fillStyle = shape['props']['fillStyle'] || 'black';
                     canvas.fill();
                     canvas.lineWidth = shape['props']['lineWidth'] || 0;
