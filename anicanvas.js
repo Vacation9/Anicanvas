@@ -1,5 +1,6 @@
 //Developed by Vacation9, Released into the Public Domain
 //Testing version, use anicanvas.min.js for production uses
+//Github: Vacation9/Anicanvas
 
 function Anicanvas(canvas) {
     this.canvasObject = document.getElementById(canvas); //actual object (won't need much for our purposes but kept just in case)
