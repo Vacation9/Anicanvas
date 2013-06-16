@@ -1,5 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Testing client for anicanvas</title>
+<script type="text/javascript">
 //Developed by Vacation9, Released into the Public Domain
 //Testing version, use anicanvas.min.js for production uses
+
+function shape(props)
+{
+    this.type = props["type"];
+    this.props = props;
+}
 
 function Anicanvas(canvas) {
     this.canvasObject = canvas; //actual object (won't need much for our purposes but kept just in case)
@@ -34,3 +45,13 @@ var AniHandler =
         }
     }
 }
+</script>
+</head>
+<body>
+<canvas id="testCanvas" width="200" height="200"></canvas>
+<script>
+var c = new Anicanvas(document.getElementById('testCanvas'));
+c.addShape({shape:"circle", x:100, y:100, radius:50});
+</script>
+</body>
+</html>
