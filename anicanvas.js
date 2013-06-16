@@ -12,10 +12,10 @@ function Anicanvas(canvas) {
     }
     this.moveShape = function (id, x, y) {
         var s = AniHandler.findById(this.carray,id);
-        if (typeof(x) == "string" && x.charAt(0) == "+") x = parseInt(x.substring(1))+s.props.x;
-        if (typeof(x) == "string" && x.charAt(0) == "-") x = parseInt(x.substring(1))-s.props.x;
-        if (typeof(y) == "string" && y.charAt(0) == "+") y = parseInt(y.substring(1))+s.props.y;
-        if (typeof(y) == "string" && y.charAt(0) == "-") y = parseInt(y.substring(1))-s.props.y;
+        if (typeof(x) == "string" && x.charAt(0) == "+") s.props.x = s.props.x+parseInt(x.substring(1));
+        if (typeof(x) == "string" && x.charAt(0) == "-") s.props.x = s.props.x-parseInt(x.substring(1));
+        if (typeof(y) == "string" && y.charAt(0) == "+") s.props.y = s.props.y+parseInt(y.substring(1));
+        if (typeof(y) == "string" && y.charAt(0) == "-") s.props.y = s.props.y-parseInt(y.substring(1));
         s.props.x = x; //Set x and y to new values
         s.props.y = y;
         AniHandler.redraw(this.context, this.carray, this.canvasObject); //then redraw; simple!
